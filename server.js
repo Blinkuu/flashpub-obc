@@ -8,8 +8,8 @@ const app = express();
 const firebaseInit = require("./config/firebase_config");
 firebaseInit();
 
-// const port = process.env.PORT || 5000;
-const port = 5000;
+const port = process.env.PORT || 5000;
+// const port = 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
