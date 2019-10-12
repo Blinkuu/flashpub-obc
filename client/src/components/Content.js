@@ -12,7 +12,11 @@ const StyledRow = styled(Row)`
 `;
 
 class Content extends Component {
-  
+
+  updateContent = content => {
+    this.forceUpdate();
+  }
+
   render() {
     return (
       <Container>
@@ -30,7 +34,7 @@ class Content extends Component {
 
         <StyledRow>
           <Col>
-            <Vim set={this.props.set} user={this.props.state} />
+            <Vim updateContent={this.updateContent} user={this.props.state} />
           </Col>
         </StyledRow>
       </Container>

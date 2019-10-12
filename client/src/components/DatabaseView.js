@@ -37,6 +37,10 @@ class DatabaseView extends Component {
     this.callApi();
   }
 
+  componentWillReceiveProps() {
+    this.callApi();
+  }
+
   callApi = async () => {
     const uuid = this.props.user.uuid;
     const responsePromise = await Axios.get("/api/secret", {

@@ -30,8 +30,8 @@ const VimEditor = withRouter((props: any) => {
   const onVimExport = async (fullpath: string, contents: ArrayBuffer, props: any) => {
     const dec = new TextDecoder("utf-8");
     const content = dec.decode(contents);
-    props.set({uuid: props.user.uuid, content: content})
-    await Axios.post("/secret", { data: { uuid: props.user.uuid, content: content }})
+    await Axios.post("/api/secret", { data: { uuid: props.user.uuid, content: content } })
+    props.updateContent(content);
   };
 
   if (VIM_WASM_AVAILABLITY_MESSAGE !== undefined) {

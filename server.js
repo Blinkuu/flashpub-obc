@@ -23,6 +23,20 @@ app.get("/api/secret", async (req, res) => {
   res.send("Failed to fetch data!");
 })
 
+app.post("/api/secret", async (req, res) => {
+  const { uuid, content } = req.body.data;
+  console.log(uuid);
+  console.log(content);
+  
+  var postData = {
+    content: content,
+  };
+
+  const usersRef = firebase.database().ref("users")
+  usersRef.child(uuid).set(postData);
+  res.send("content");
+})
+
 app.post("/api/auth", async (req, res) => {
   const { name, email, login } = req.body.userData;
 
