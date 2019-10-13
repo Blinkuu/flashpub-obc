@@ -4,7 +4,6 @@ import DatabaseView from "./DatabaseView";
 import Vim from "./Vim";
 import styled from "styled-components";
 import { Container, Row, Col } from "react-bootstrap";
-import Axios from "axios";
 
 const StyledRow = styled(Row)`
   margin: 1rem;

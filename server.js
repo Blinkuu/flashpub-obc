@@ -16,7 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/api/secret/:id", async (req, res) => {
   const usersRef = firebase.database().ref("users");
   await usersRef.once("value", (data) => {
-    console.log(data);
     res.send(data);
   });
 })

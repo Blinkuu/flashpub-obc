@@ -5,7 +5,7 @@ import { Vim, checkVimWasmIsAvailable } from "react-vim-wasm";
 
 import Axios from "axios";
 import { withRouter } from "react-router-dom"
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 const VIM_WASM_AVAILABLITY_MESSAGE = checkVimWasmIsAvailable();
 const DOT_VIM_DIRS = ["/home/web_user/.vim"];

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import styled from "styled-components";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -32,7 +32,6 @@ class SignInButton extends Component {
       .signInAnonymously();
     const responsePromise = await Axios.post("/api/auth", { userData });
     await Promise.all([firebasePromise, responsePromise]);
-    console.log("dnwaodnawo");
     this.props.history.push("/secret");
   };
 

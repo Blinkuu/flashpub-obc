@@ -39,7 +39,7 @@ class DatabaseView extends Component {
     this.callApi();
   }
 
-  componentWillReceiveProps() {
+  componentDidUpdate() {
     this.callApi();
   }
 
@@ -62,10 +62,10 @@ class DatabaseView extends Component {
     return (
       <StyledContainer className="container-fluid">
         <Row>
-          <StyledHeader sm={4}>Database view</StyledHeader>
+          <StyledHeader lg={6} sm={12}>Database view</StyledHeader>
         </Row>
         <Row>
-          <StyledCol sm={4}>
+          <StyledCol lg={6} sm={12}>
             <StyledListGroup>
               <StyledListGroupItem>Content: {this.state.content}</StyledListGroupItem>
               <StyledListGroupItem>Email: {this.state.email}</StyledListGroupItem>

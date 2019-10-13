@@ -31,10 +31,10 @@ const Instruction = props => {
   return (
     <StyledContainer className="container-fluid">
       <Row>
-        <StyledHeader sm={4}>Instructions</StyledHeader>
+        <StyledHeader lg={6} sm={12}>Instructions</StyledHeader>
       </Row>
       <Row>
-        <StyledCol sm={4}>
+        <StyledCol lg={6} sm={12}>
           <StyledListGroup>
             <StyledListGroupItem>:i to enter insert mode</StyledListGroupItem>
             <StyledListGroupItem>esc to enter default mode</StyledListGroupItem>
