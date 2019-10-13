@@ -19,3 +19,6 @@ To do so:
 2. Save file (:w filename).
 3. Export file (:export).
 4. You can now logout (:q). (Optional)
+
+# Run on localhost
+To run the application on localhost use command *yarn dev* in the root directory.
