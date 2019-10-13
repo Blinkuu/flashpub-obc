@@ -37,7 +37,7 @@ const Wrapper = props => {
 
 class App extends Component {
   state = {
-    uuid: "",
+    uuid: ""
   };
 
   set = body => {
@@ -48,24 +48,32 @@ class App extends Component {
     return (
       <Wrapper>
         <FirebaseAuthProvider {...config} firebase={firebase}>
-          <Router>
-              <FirebaseAuthConsumer>
-                {({ isSignedIn, firebase }) => {
-                  if (isSignedIn === true) {
-                    return (<Switch>
-                      {/* <Route exact path="/" render={props => (<Secret set={this.set} state={this.state} /> )}/> */}
-                      <Route exact path="/secret" render={props => (<Secret set={this.set} state={this.state} /> )}/>
-                    </Switch>);
-                  } else {
-                    return (<Switch>
-                      <Route exact path="/" render={props => (<SignInButton {...props} set={this.set} />)} />
-                      {/* <Route exact path="/secret" render={props => ( <SignInButton {...props} set={this.set} /> )} /> */}
-                    </Switch>
-                    );
-                  }
-                }}
-              </FirebaseAuthConsumer>
-          </Router>
+          <FirebaseAuthConsumer>
+            {({ isSignedIn, user, providerId }) => {
+              return (
+                <Router>
+                  <Switch>
+                    <Route
+                      exact path="/"
+                      render={props => (
+                        <SignInButton {...props} set={this.set} />
+                      )}
+                    />
+                    <Route
+                      exact path="/secret"
+                      render={props => {
+                        if (isSignedIn === true) {
+                          return <Secret set={this.set} state={this.state} />;
+                        } else {
+                          return <Redirect to="/" />;
+                        }
+                      }}
+                    />
+                  </Switch>
+                </Router>
+              );
+            }}
+          </FirebaseAuthConsumer>
         </FirebaseAuthProvider>
       </Wrapper>
     );

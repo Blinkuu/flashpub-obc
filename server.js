@@ -8,33 +8,27 @@ const app = express();
 const firebaseInit = require("./config/firebase_config");
 firebaseInit();
 
-const port = process.env.PORT || 5000;
-// const port = 5000;
+// const port = process.env.PORT || 5000;
+const port = 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/api/secret", async (req, res) => {
-  console.log(req.body);
+app.get("/api/secret/:id", async (req, res) => {
   const usersRef = firebase.database().ref("users");
   await usersRef.once("value", (data) => {
+    console.log(data);
     res.send(data);
   });
-  res.send("Failed to fetch data!");
 })
 
 app.post("/api/secret", async (req, res) => {
   const { uuid, content } = req.body.data;
-  console.log(uuid);
-  console.log(content);
-  
-  var postData = {
-    content: content,
-  };
 
-  const usersRef = firebase.database().ref("users")
-  usersRef.child(uuid).set(postData);
-  res.send("content");
+  const usersRef = firebase.database().ref(`users/${uuid}/content`);
+  await usersRef.set(content);
+
+  res.send(content);
 })
 
 app.post("/api/auth", async (req, res) => {

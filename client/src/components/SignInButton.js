@@ -29,13 +29,15 @@ class SignInButton extends Component {
       .signInAnonymously();
     const responsePromise = await Axios.post("/api/auth", { userData });
     await Promise.all([firebasePromise, responsePromise]);
+    console.log("dnwaodnawo");
+    this.props.history.push("/secret");
   };
 
   render() {
     return (
-      <Link to={SECRET}>
+      // <Link to={SECRET}>
         <StyledButton onClick={this.onClick}>Click me!</StyledButton>
-      </Link>
+      // </Link>
     );
   }
 }

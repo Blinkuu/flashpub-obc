@@ -30,7 +30,9 @@ const StyledListGroupItem = styled(ListGroup.Item)`
 
 class DatabaseView extends Component {
   state = {
-    content: ""
+    content: "",
+    email: "",
+    name: ""
   };
 
   componentDidMount() {
@@ -43,13 +45,16 @@ class DatabaseView extends Component {
 
   callApi = async () => {
     const uuid = this.props.user.uuid;
-    const responsePromise = await Axios.get("/api/secret", {
-      data: { uuid: "123" }
-    });
-
+    const responsePromise = await Axios.get("/api/secret/" + uuid);
+    
     const content = responsePromise.data[uuid].content;
+    const name = responsePromise.data[uuid].name;
+    const wholeName = `${name.title} ${name.first} ${name.last}`;
+    const email = responsePromise.data[uuid].email;
     this.setState({
-      content: content
+      content: content,
+      email: email,
+      name: wholeName
     });
   };
 
@@ -62,7 +67,9 @@ class DatabaseView extends Component {
         <Row>
           <StyledCol sm={4}>
             <StyledListGroup>
-              <StyledListGroupItem>{this.state.content}</StyledListGroupItem>
+              <StyledListGroupItem>Content: {this.state.content}</StyledListGroupItem>
+              <StyledListGroupItem>Email: {this.state.email}</StyledListGroupItem>
+              <StyledListGroupItem>Name: {this.state.name}</StyledListGroupItem>
             </StyledListGroup>
           </StyledCol>
         </Row>
