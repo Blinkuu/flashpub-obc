@@ -15,7 +15,7 @@ To authenticate as a guest click the main button. You will be redirected to page
 
 To do so:
 
-1. Insert some text into the editor (:i to switch into insert mode. After edits hit esc to enter normal mode again). (Optional, you can leave the edito blank if you wish)
+1. Insert some text into the editor (:i to switch into insert mode. After edits hit esc to enter normal mode again). (Optional, you can leave the editor blank if you wish)
 2. Save file (:w filename).
 3. Export file (:export).
 4. You can now logout (:q). (Optional)
