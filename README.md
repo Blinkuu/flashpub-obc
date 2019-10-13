@@ -21,4 +21,12 @@ To do so:
 4. You can now logout (:q). (Optional)
 
 # Run on localhost
-To run the application on localhost use command *yarn dev* in the root directory.
+Install server and client dependencies
+```
+yarn
+cd client
+yarn
+```
+To run the application on localhost use command  
+```yarn dev```  
+in the root directory.
