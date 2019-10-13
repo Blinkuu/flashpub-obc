@@ -3,8 +3,7 @@ import Axios from "axios";
 import styled from "styled-components";
 import firebase from "firebase";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-import { SECRET } from "../constants/routes";
+import { Container, Row, Col } from "react-bootstrap";
 
 const StyledButton = styled(Button)`
   color: #eeeeee;
@@ -14,6 +13,10 @@ const StyledButton = styled(Button)`
   border: 2px solid #00adb5;
   border-radius: 3px;
   background-color: #393e46 !important;
+`;
+
+const StyledCol = styled(Col)`
+  margin: auto;
 `;
 
 class SignInButton extends Component {
@@ -35,9 +38,13 @@ class SignInButton extends Component {
 
   render() {
     return (
-      // <Link to={SECRET}>
-        <StyledButton onClick={this.onClick}>Click me!</StyledButton>
-      // </Link>
+      <Container>
+        <Row>
+          <StyledCol sm={4}>
+            <StyledButton onClick={this.onClick}>Click me!</StyledButton>
+          </StyledCol>
+        </Row>
+      </Container>
     );
   }
 }
